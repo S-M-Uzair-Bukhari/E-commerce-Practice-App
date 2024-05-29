@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const userModel = require('../Models/user');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 
 const signUp = async(req, sessionKey) => {
