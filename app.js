@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express(); 
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./db/config');
 const path = require('path');
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use(bodyParser.json());
 
+app.use(cors());
 
 // const user_routes = require('./Routes/user');
 
