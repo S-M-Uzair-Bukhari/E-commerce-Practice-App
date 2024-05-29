@@ -6,7 +6,7 @@ const path = require('path');
 require('dotenv').config();
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use(bodyParser.json());
@@ -32,10 +32,10 @@ app.get('/', (req,res) => {
 
 const start = async () => {
     try{
+        await connectDB();
         app.listen(PORT, () => {
             console.log(`${PORT} It is Working`)
         });
-        connectDB();
     } catch (error) {
         console.log(error);
     }
