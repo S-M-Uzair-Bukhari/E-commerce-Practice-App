@@ -11,6 +11,20 @@ const createSubCategory = async (req,res) =>{
     }
 };
 
+const getSubcategoryByCategory = async (req,res)=>{
+    try {
+        console.log('This is the Category Id', req.query);
+        const { parent } = req.query;
+        console.log("this is Cat ID:",parent);
+        console.log('Getting Subcategory by Category');
+        let getSubCatByCat = await subCategoryFunction.getSubCatByCategory(parent);
+        res.status(200).json({msg: "All Product From Subcategory:", getSubCatByCat});
+    } catch (error) {
+        console.error("Having Errors:", error);
+        res.status(500).json({error: "Faild To Get SubCategories by Category"});
+    }
+};
+
 const getSubCategory = async (req,res) => {
     try {
         console.log('Getting Subcategories');
@@ -51,6 +65,7 @@ const deleteSubCategory = async (req,res) =>{
 module.exports = {
     createSubCategory,
     getSubCategory,
+    getSubcategoryByCategory,
     updateSubCategory,
     deleteSubCategory
 };

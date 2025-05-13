@@ -12,7 +12,19 @@ const createOrder = async (req,res) => {
         // }
 
         let order = await orderFunction.createOrder(req);
-        res.status(200).json({msg:'Your Order is Successful', order} );
+        res.status(200).json({
+            order:{
+                userId: user._id,
+                orderId: order._id,
+                products: order.products.map(product =>({
+                    name: product.name,
+                    price: product.price
+                })),
+                totalAmount: order.totalAmount,
+                ConfirmationNo: 'Conf' + new Date().getTime(),
+                message:'Your Order is Successful'
+            }
+        } );
     } catch (error) {
         console.error("Having Errors:", error);
         res.status(500).json({error: "Faild To Create Order"});

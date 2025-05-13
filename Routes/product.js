@@ -4,7 +4,7 @@ const product =  require('../Controllers/product');
 const middleware = require('../middlewares/index');
 
 
-router.post('/createProduct',middleware.verifyAdmin, product.createProduct);
+router.post('/createProduct', product.createProduct);
 router.get('/getProducts', product.getProduct);
 router.get('/getProductByCategory', product.getProductByCategory);
 router.get('/getProductsBysubCategory', product.getProductBySubcategory);

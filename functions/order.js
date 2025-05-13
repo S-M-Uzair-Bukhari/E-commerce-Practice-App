@@ -20,16 +20,15 @@ const createOrder = async (req)=>{
         let productDetails = await Product.findById(item.product);
         console.log(item);
         const{ subCategoryId, name, price} = productDetails;
-        const { quantity } = item;
-        const totalProduct = productDetails.price * quantity ;
+        // const { quantity } = item;
+        const totalProduct = productDetails.price  ;
 
         totalAmount += totalProduct;
 
         formattedData.push({
             productId: productDetails._id,
-            subCategoryId: productDetails.subCategoryId,
+            subCategoryId: productDetails.subCategoryId._id,
             name: productDetails.name,
-            quantity,
             price: productDetails.price,
             totalProduct
 

@@ -12,8 +12,12 @@ const productSchema = new Schema({
     },
     images:[{
         type: String,
-        required: true,
+        // required: true,
     }],
+    imagePath:{
+        type: String,
+        // required: true
+    },
     price: {
         type: Number,
         required: true

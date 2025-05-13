@@ -37,7 +37,7 @@ const getProductByCategory = async (categoryId) =>{
 };
 
 const getProductBySubcategory = async (subCategoryId) =>{
-    console.log('Gettings All Products by Subcategory:');
+    console.log('Gettings All Products by Subcategory:',subCategoryId);
     let productsBySubcategory = await productModel.find({subCategoryId: subCategoryId},
         {
             createdAt: 0,
@@ -56,6 +56,7 @@ const updateProductImage = async (req) =>{
     const images = req.files.map(file => file.path);
     let product = await productModel.findById({ _id: req.body._id})
         product.images = images;
+        product.imagePath = images.length > 0 ? "media/" + images[0] : "";
     const udpatedProduct = await product.save();
     return udpatedProduct
 }; 

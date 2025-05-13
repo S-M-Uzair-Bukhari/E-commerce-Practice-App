@@ -25,7 +25,7 @@ const validateUser = async (req)=>{
     } else {
         return false;
     }
-};
+};  
 
 const verifyPassword = async (password, hash) => {
     let match = await bcrypt.compare(password, hash);

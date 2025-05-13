@@ -25,7 +25,7 @@ const orderSchema = new Schema ({
         },
         quantity:{
             type: Number,
-            required: true
+            required: false
         },
         category: {
             type: String,
@@ -53,4 +53,4 @@ const orderSchema = new Schema ({
 
 
 const order = mongoose.model('Order', orderSchema);
-module.exports = order;
+module.exports = order; 

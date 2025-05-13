@@ -25,7 +25,7 @@ const getProduct = async (req,res) =>{
 
 const getProductByCategory = async (req,res) =>{
     try {
-        const { categoryId } = req.body;
+        const { categoryId } = req.query;
         console.log('Getting Products by Category');
         let getProductByCat = await productFunction.getProductByCategory(categoryId);
         res.status(200).json({msg: "All Product Details By Category:", getProductByCat});
@@ -33,12 +33,13 @@ const getProductByCategory = async (req,res) =>{
         console.error("Having Errors:", error);
         res.status(500).json({error: "Faild To Get Products By category"});
     }
-}
+};
 
 const getProductBySubcategory = async (req,res) =>{
     try {
-        const { subCategoryId } = req.body;
-        console.log(subCategoryId)
+        console.log('REQ QUERY:', req.query);
+        const { subCategoryId } = req.query;
+        console.log("this is SubCat ID:",subCategoryId)
         console.log('Getting Products by Subcategory');
         let getProductBysubCat = await productFunction.getProductBySubcategory(subCategoryId);
         res.status(200).json({msg: "All Product From Subcategory:", getProductBysubCat});

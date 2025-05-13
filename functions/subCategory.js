@@ -19,6 +19,14 @@ const getAllSubCategory = async (req) => {
     return allsubCategories
 };
 
+const getSubCatByCategory = async (parent) => {
+    console.log("Getting Subcategory By Category", parent);
+    let subCatByCat = await subCategoryModel.find({parent}).populate({
+        path: 'parent',
+    });
+    return subCatByCat
+};
+
 const updateSubCategory = async (subCatId, updatedData) => {
     console.log('Updating SubCategory');
     let updatedsubCategory = await subCategoryModel.findByIdAndUpdate(
@@ -39,6 +47,7 @@ const deleteSubCategory = async (subcatId) => {
 module.exports = {
     creatSubcategory,
     getAllSubCategory,
+    getSubCatByCategory,
     updateSubCategory,
     deleteSubCategory
 };
